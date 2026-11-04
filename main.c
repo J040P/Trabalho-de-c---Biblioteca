@@ -1,16 +1,3 @@
-                printf("Cadastro em construcao\n");
-                break;
-            case 2:
-                printf("Listagem em construcao\n");
-                break;
-            case 3:
-                printf("Edicao em construcao\n");
-                break;
-            case 4:
-                printf("Remocao em construcao\n");
-                break;
-            case 0:
-                printf("Voltando...\n");
                 break;
             default:
                 printf("Opcao invalida\n");
@@ -19,46 +6,47 @@
     } while (opcao != 0);
 }
 
-/* MODULO 2 - FICHARIO DE LEITORES
-   Autor: Yan */
+/* MODULO 3 - EMPRESTIMOS
+   Autor: Bernardo */
 
-struct Leitor {
+struct Emprestimo {
+    int idEmprestimo;
+    int idLivro;
     int idLeitor;
-    char nome[50];
-    char telefone[20];
-    int numeroCarteirinha;
-    float multaPendente;
-    int ativo;
+    char dataEmprestimo[11];
+    char dataDevolucaoPrevista[11];
+    float valorMulta;
+    int devolvido;
 };
 
-struct Leitor leitores[50];
-int totalLeitores = 0;
+struct Emprestimo emprestimos[50];
+int totalEmprestimos = 0;
 
-void moduloLeitores() {
+void moduloEmprestimos() {
     int opcao;
 
     do {
-        printf("\n=== FICHARIO DE LEITORES ===\n");
-        printf("1. Cadastrar leitor\n");
-        printf("2. Listar / buscar leitores\n");
-        printf("3. Editar leitor\n");
-        printf("4. Remover leitor\n");
+        printf("\n=== EMPRESTIMOS ===\n");
+        printf("1. Registrar emprestimo\n");
+        printf("2. Listar / buscar emprestimos\n");
+        printf("3. Editar / registrar devolucao\n");
+        printf("4. Cancelar emprestimo\n");
         printf("0. Voltar\n");
         printf("Escolha: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
             case 1:
-                printf("Cadastro em construcao\n");
+                printf("Emprestimo em construcao\n");
                 break;
             case 2:
-                printf("Listagem em construcao\n");
+                printf("Consulta em construcao\n");
                 break;
             case 3:
-                printf("Edicao em construcao\n");
+                printf("Devolucao em construcao\n");
                 break;
             case 4:
-                printf("Remocao em construcao\n");
+                printf("Cancelamento em construcao\n");
                 break;
             case 0:
                 printf("Voltando...\n");
@@ -126,3 +114,9 @@ void moduloReservasRelatorios() {
             case 0:
                 printf("Voltando...\n");
                 break;
+            default:
+                printf("Opcao invalida\n");
+        }
+
+    } while (opcao != 0);
+}
