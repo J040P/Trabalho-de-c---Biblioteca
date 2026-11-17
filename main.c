@@ -1,58 +1,24 @@
+
 #include <stdio.h>
+#include "acervo.h"
 
-/* MODULO 1 - ACERVO DE LIVROS
-   Autor: Joao Pedro */
+// ==========================================
+// BIBLIOTECA CLASSICA - CHECKPOINT 2
+// Integrantes:
+// Joao Pedro - Acervo de Livros
+// Yan - Fichario de Leitores
+// Bernardo - Emprestimos
+// Andre Fogaca - Reservas e Relatorios
+// ==========================================
 
-struct Livro {
-    int idLivro;
-    char titulo[50];
-    char autor[50];
-    int anoPublicacao;
-    float valorEstimado;
-    int disponivel;
-};
+// MODULO 1 - ACERVO DE LIVROS
+// Autor: Joao Pedro
+// Implementado no arquivo acervo.h
 
-struct Livro acervo[50];
-int totalLivros = 0;
-
-void moduloLivros() {
-    int opcao;
-
-    do {
-        printf("\n=== ACERVO DE LIVROS ===\n");
-        printf("1. Cadastrar livro\n");
-        printf("2. Listar / buscar livros\n");
-        printf("3. Editar livro\n");
-        printf("4. Remover livro\n");
-        printf("0. Voltar\n");
-        printf("Escolha: ");
-        scanf("%d", &opcao);
-
-        switch (opcao) {
-            case 1:
-                printf("Cadastro em construcao\n");
-                break;
-            case 2:
-                printf("Listagem em construcao\n");
-                break;
-            case 3:
-                printf("Edicao em construcao\n");
-                break;
-            case 4:
-                printf("Remocao em construcao\n");
-                break;
-            case 0:
-                printf("Voltando...\n");
-                break;
-            default:
-                printf("Opcao invalida\n");
-        }
-
-    } while (opcao != 0);
-}
-
-/* MODULO 2 - FICHARIO DE LEITORES
-   Autor: Yan */
+// ==========================================
+// MODULO 2 - FICHARIO DE LEITORES
+// Autor: Yan
+// ==========================================
 
 struct Leitor {
     int idLeitor;
@@ -102,8 +68,10 @@ void moduloLeitores() {
     } while (opcao != 0);
 }
 
-/* MODULO 3 - EMPRESTIMOS
-   Autor: Bernardo */
+// ==========================================
+// MODULO 3 - EMPRESTIMOS
+// Autor: Bernardo
+// ==========================================
 
 struct Emprestimo {
     int idEmprestimo;
@@ -154,8 +122,11 @@ void moduloEmprestimos() {
     } while (opcao != 0);
 }
 
-/* MODULO 4 - RESERVAS E RELATORIOS
-   Autor: Andre Fogaca - RGM: 48380831 */
+// ==========================================
+// MODULO 4 - RESERVAS E RELATORIOS
+// Autor: Andre Fogaca
+// RGM: 48380831
+// ==========================================
 
 struct Reserva {
     int idReserva;
@@ -215,4 +186,69 @@ void moduloReservasRelatorios() {
         }
 
     } while (opcao != 0);
+}
+
+// ==========================================
+// MENU PRINCIPAL
+// Autores: Joao Pedro, Yan, Bernardo e Andre
+// ==========================================
+
+int main() {
+    int opcaoPrincipal;
+
+    // Carrega os livros armazenados no CSV
+    carregarLivrosCSV();
+
+    do {
+        printf("\n===================================\n");
+        printf("         BIBLIOTECA CLASSICA       \n");
+        printf("       SISTEMA DE GERENCIAMENTO    \n");
+        printf("===================================\n");
+
+        printf("1. Acervo de Livros - Joao Pedro\n");
+        printf("2. Fichario de Leitores - Yan\n");
+        printf("3. Emprestimos - Bernardo\n");
+        printf("4. Reservas e Relatorios - Andre\n");
+        printf("0. Encerrar Sistema\n");
+
+        printf("-----------------------------------\n");
+        printf("Digite sua opcao: ");
+
+        if (scanf("%d", &opcaoPrincipal) != 1) {
+            printf("Digite um numero valido!\n");
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) {}
+            opcaoPrincipal = -1;
+        }
+
+        switch (opcaoPrincipal) {
+
+            case 1:
+                moduloLivros();
+                break;
+
+            case 2:
+                moduloLeitores();
+                break;
+
+            case 3:
+                moduloEmprestimos();
+                break;
+
+            case 4:
+                moduloReservasRelatorios();
+                break;
+
+            case 0:
+                printf("\nEncerrando o sistema...\n");
+                printf("Obrigado por utilizar a Biblioteca Classica!\n");
+                break;
+
+            default:
+                printf("\nOpcao invalida!\n");
+        }
+
+    } while (opcaoPrincipal != 0);
+
+    return 0;
 }
